@@ -1,9 +1,8 @@
-package com.sahe.mrburguer.activity.favorite
+package com.sahe.mrburguer.domain
 
 import android.content.Context
 import android.widget.Toast
 import com.sahe.mrburguer.db.TinyDB
-import com.sahe.mrburguer.domain.FoodModel
 
 class ManagmentFavorite(val context: Context) {
 

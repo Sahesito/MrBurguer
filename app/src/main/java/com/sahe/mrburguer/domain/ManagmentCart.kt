@@ -1,10 +1,9 @@
-package com.sahe.mrburguer.activity.cart
+package com.sahe.mrburguer.domain
 
 import android.content.Context
 import android.widget.Toast
 import com.sahe.mrburguer.db.ChangeNumberItemsListener
 import com.sahe.mrburguer.db.TinyDB
-import com.sahe.mrburguer.domain.FoodModel
 
 class ManagmentCart(val context: Context) {
 

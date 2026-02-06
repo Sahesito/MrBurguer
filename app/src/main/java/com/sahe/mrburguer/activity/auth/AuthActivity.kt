@@ -19,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.sahe.mrburguer.activity.dashboard.MainActivity
-import com.sahe.mrburguer.viewModel.AuthViewModel
 
 class AuthActivity : AppCompatActivity() {
     private val viewModel: AuthViewModel by viewModels()

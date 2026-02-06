@@ -36,6 +36,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberAsyncImagePainter
 import com.sahe.mrburguer.R
 import com.sahe.mrburguer.domain.FoodModel
+import com.sahe.mrburguer.domain.ManagmentCart
 import java.text.DecimalFormat
 
 @Composable

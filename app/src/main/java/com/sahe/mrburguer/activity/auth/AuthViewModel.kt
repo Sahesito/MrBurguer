@@ -1,4 +1,4 @@
-package com.sahe.mrburguer.viewModel
+package com.sahe.mrburguer.activity.auth
 
 import androidx.lifecycle.ViewModel
 import com.google.firebase.FirebaseNetworkException
