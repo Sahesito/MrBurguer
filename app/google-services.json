@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "226813015688",
+    "project_id": "appmrburguer",
+    "storage_bucket": "appmrburguer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226813015688:android:1a6136b16a48d9b249113d",
+        "android_client_info": {
+          "package_name": "com.sahe.mrburguer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOYIFy96W88phWCHQj53TyLzjLVcvGTzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
