@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.sahe.mrburguer.MainActivity
+import com.sahe.mrburguer.activity.dashboard.MainActivity
 import com.sahe.mrburguer.R
 
 class SplashActivity : AppCompatActivity() {
