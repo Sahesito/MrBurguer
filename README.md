@@ -51,8 +51,12 @@ ui          → Pantallas y componentes Compose
 ---
 
 ## 📸 Capturas
-
-> 💡 _Agrega screenshots aquí para mejorar la presentación del repositorio_
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/f9816763-223d-4260-9435-2c98bf31a00c" />
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/b4ee0ef2-578d-47f2-a8de-4b7713060da2" />
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/f96c927f-a318-4a7d-9386-7c652da0a7ff" />
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/cad7dc2a-9514-445b-9eee-a451b5b4d4e7" />
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/a7302ce7-8214-4398-991d-22af8b806c5d" />
+<img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/89fb6b4d-ff9c-4145-a93c-425180408faa" />
 
 ---
 
