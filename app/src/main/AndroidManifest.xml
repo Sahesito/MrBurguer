@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MrBurguer">
         <activity
+            android:name=".activity.auth.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.auth.AuthActivity"
             android:exported="false" />
         <activity

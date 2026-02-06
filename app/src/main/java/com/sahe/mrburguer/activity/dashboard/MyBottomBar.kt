@@ -17,7 +17,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.google.firebase.auth.FirebaseAuth
 import com.sahe.mrburguer.R
+import com.sahe.mrburguer.activity.auth.AuthActivity
 import com.sahe.mrburguer.activity.cart.CartActivity
 import com.sahe.mrburguer.activity.favorite.FavoriteActivity
 
@@ -41,6 +43,13 @@ fun MyBottomBar() {
                         }
                         "Favorite" -> {
                             context.startActivity(Intent(context, FavoriteActivity::class.java))
+                        }
+                        "Profile" -> {
+                            FirebaseAuth.getInstance().signOut()
+                            Toast.makeText(context, "Log out", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(context, AuthActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            context.startActivity(intent)
                         }
                         else -> {
                             Toast.makeText(context, bottomMenuItem.label, Toast.LENGTH_SHORT).show()

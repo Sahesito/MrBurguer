@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.sahe.mrburguer.activity.dashboard.MainActivity
 import com.sahe.mrburguer.R
 
@@ -33,6 +34,15 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val fromLogout = intent.getBooleanExtra("FROM_LOGOUT", false)
+        if (!fromLogout) {
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+                return
+            }
+        }
         setContent {
             SplashScreen(onGetStartedClick = {
               startActivity(Intent(this, MainActivity::class.java))
@@ -98,7 +108,7 @@ fun SplashScreen( onGetStartedClick:()->Unit = {} ) {
                 .padding(16.dp)
         )
 
-        GetStartedButton(
+        GetStartedButtons(
             onClick = onGetStartedClick,
             modifier = Modifier
                 .padding(top = 16.dp)

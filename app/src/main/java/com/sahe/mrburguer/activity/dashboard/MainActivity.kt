@@ -1,5 +1,6 @@
 package com.sahe.mrburguer.activity.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +17,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.google.firebase.auth.FirebaseAuth
+import com.sahe.mrburguer.activity.splash.SplashActivity
 import com.sahe.mrburguer.domain.BannerModel
 import com.sahe.mrburguer.domain.CategoryModel
 import com.sahe.mrburguer.viewModel.MainViewModel
@@ -24,9 +27,24 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            navigateToIntro()
+            return
+        }
+
         setContent {
             MainScreen()
         }
+    }
+
+    private fun navigateToIntro() {
+        val intent = Intent(this, SplashActivity::class.java).apply {
+            putExtra("FROM_LOGOUT", true)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
+        finish()
     }
 }
 
