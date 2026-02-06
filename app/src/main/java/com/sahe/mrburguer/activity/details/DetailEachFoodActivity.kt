@@ -19,23 +19,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.sahe.mrburguer.activity.cart.ManagmentCart
+import com.sahe.mrburguer.activity.favorite.ManagmentFavorite
 import com.sahe.mrburguer.domain.FoodModel
 
 class DetailEachFoodActivity : AppCompatActivity() {
     private lateinit var item: FoodModel
     private lateinit var managmentCart: ManagmentCart
+    private lateinit var managmentFavorite: ManagmentFavorite
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         item = intent.getSerializableExtra("object") as FoodModel
         item.numberInCart = 1
         managmentCart = ManagmentCart(this)
+        managmentFavorite = ManagmentFavorite(this)
 
         setContent {
             DetailScreen(
                 item = item,
                 onBackClick = { finish() },
-                onAddToCartClick = {managmentCart.insertItem(item)}
+                onAddToCartClick = { managmentCart.insertItem(item) },
+                managmentFavorite = managmentFavorite
             )
         }
     }
@@ -45,9 +49,12 @@ class DetailEachFoodActivity : AppCompatActivity() {
 fun DetailScreen(
     item: FoodModel,
     onBackClick: () -> Unit,
-    onAddToCartClick: () -> Unit
+    onAddToCartClick: () -> Unit,
+    managmentFavorite: ManagmentFavorite
 ) {
     var numberInCart by remember { mutableStateOf(item.numberInCart) }
+    var isFavorite by remember { mutableStateOf(managmentFavorite.isFavorite(item)) }
+
     ConstraintLayout {
         val (footer, column) = createRefs()
         Column(
@@ -61,32 +68,36 @@ fun DetailScreen(
                     start.linkTo(parent.start)
                 }
                 .padding(bottom = 80.dp)
-            ) {
-                HeaderSection(
-                    item = item,
-                    numberInCart = numberInCart,
-                    onBackClick = onBackClick,
-                    onIncrement = {
-                        numberInCart++
-                        item.numberInCart=numberInCart
-                    },
-                    onDecrement = {
-                        if(numberInCart>1) {
-                            numberInCart--
-                            item.numberInCart=numberInCart
-                        }
+        ) {
+            HeaderSection(
+                item = item,
+                numberInCart = numberInCart,
+                isFavorite = isFavorite,
+                onBackClick = onBackClick,
+                onFavoriteClick = {
+                    isFavorite = managmentFavorite.toggleFavorite(item)
+                },
+                onIncrement = {
+                    numberInCart++
+                    item.numberInCart = numberInCart
+                },
+                onDecrement = {
+                    if (numberInCart > 1) {
+                        numberInCart--
+                        item.numberInCart = numberInCart
                     }
-                )
-                DescriptionSection(item.Description)
-            }
+                }
+            )
+            DescriptionSection(item.Description)
+        }
 
-            FooterSection(
-                onAddToCartClick,
-                totalPrice = (item.Price * numberInCart),
-                Modifier.constrainAs(footer){
-                    bottom.linkTo(parent.bottom)
-                    end.linkTo(parent.end)
-                    start.linkTo(parent.start)
+        FooterSection(
+            onAddToCartClick,
+            totalPrice = (item.Price * numberInCart),
+            Modifier.constrainAs(footer) {
+                bottom.linkTo(parent.bottom)
+                end.linkTo(parent.end)
+                start.linkTo(parent.start)
             }
         )
     }

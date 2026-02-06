@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MrBurguer">
         <activity
+            android:name=".activity.auth.AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.favorite.FavoriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.cart.CartActivity"
             android:exported="false" />
         <activity

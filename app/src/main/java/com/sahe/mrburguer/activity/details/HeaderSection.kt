@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -25,7 +26,9 @@ import com.sahe.mrburguer.domain.FoodModel
 fun HeaderSection(
     item: FoodModel,
     numberInCart: Int,
+    isFavorite: Boolean,
     onBackClick: () -> Unit,
+    onFavoriteClick: () -> Unit,
     onIncrement: () -> Unit,
     onDecrement: () -> Unit
 ) {
@@ -45,10 +48,7 @@ fun HeaderSection(
                 .fillMaxWidth()
                 .height(400.dp)
                 .clip(
-                    RoundedCornerShape(
-                        bottomStart = 30.dp,
-                        bottomEnd = 30.dp
-                    )
+                    RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp)
                 )
                 .constrainAs(mainImage) {
                     top.linkTo(parent.top)
@@ -56,6 +56,7 @@ fun HeaderSection(
                     start.linkTo(parent.start)
                 }
         )
+
         Image(
             painter = painterResource(R.drawable.arc_bg),
             contentDescription = null,
@@ -67,17 +68,23 @@ fun HeaderSection(
                     start.linkTo(parent.start)
                 }
         )
+
         BackButton(
             onBackClick,
-            Modifier.constrainAs(back
-            ) {
-            top.linkTo(parent.top)
-            start.linkTo(parent.start)
-        })
-        FavoriteButton(Modifier.constrainAs(fav){
-            top.linkTo(parent.top)
-            end.linkTo(parent.end)
-        })
+            Modifier.constrainAs(back) {
+                top.linkTo(parent.top)
+                start.linkTo(parent.start)
+            }
+        )
+
+        FavoriteButton(
+            isFavorite = isFavorite,
+            onFavoriteClick = onFavoriteClick,
+            modifier = Modifier.constrainAs(fav) {
+                top.linkTo(parent.top)
+                end.linkTo(parent.end)
+            }
+        )
 
         Text(
             text = item.Title,
@@ -93,17 +100,21 @@ fun HeaderSection(
                 }
         )
 
-        RowDetail(item, Modifier.constrainAs(detailRow){
-            top.linkTo(title.bottom)
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-        })
+        RowDetail(
+            item,
+            Modifier.constrainAs(detailRow) {
+                top.linkTo(title.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            }
+        )
+
         NumberRow(
             item = item,
             numberInCart = numberInCart,
             onIncrement = onIncrement,
             onDecrement = onDecrement,
-            Modifier.constrainAs(numberRow){
+            Modifier.constrainAs(numberRow) {
                 top.linkTo(detailRow.bottom)
                 bottom.linkTo(parent.bottom)
                 start.linkTo(parent.start)
@@ -112,31 +123,32 @@ fun HeaderSection(
         )
     }
 }
+
 @Composable
-private fun BackButton(
-    onClick:()->Unit,
+private fun BackButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(R.drawable.back_grey),
+        contentDescription = null,
+        modifier = modifier
+            .padding(start = 16.dp, top = 48.dp)
+            .clickable { onClick() }
+    )
+}
+
+@Composable
+private fun FavoriteButton(
+    isFavorite: Boolean,
+    onFavoriteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Image(
-        painter = painterResource(R.drawable.back),
-        contentDescription = null,
+        painter = painterResource(
+            if (isFavorite) R.drawable.fav_icon else R.drawable.fav_icon
+        ),
+        contentDescription = "Favorite",
+        colorFilter = if (isFavorite) ColorFilter.tint(colorResource(R.color.orange)) else null,
         modifier = modifier
-            .padding(
-                start = 16.dp,
-                top = 48.dp
-            )
-            .clickable{ onClick() }
-    )
-}
-@Composable
-private fun FavoriteButton(modifier: Modifier = Modifier) {
-    Image(
-        painter = painterResource(R.drawable.fav_icon),
-        contentDescription = null,
-        modifier = modifier
-            .padding(
-                start = 16.dp,
-                top = 48.dp
-            )
+            .padding(end = 16.dp, top = 48.dp)
+            .clickable { onFavoriteClick() }
     )
 }

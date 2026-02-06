@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.sahe.mrburguer.R
 import com.sahe.mrburguer.activity.cart.CartActivity
+import com.sahe.mrburguer.activity.favorite.FavoriteActivity
 
 @Composable
 fun MyBottomBar() {
@@ -34,10 +35,16 @@ fun MyBottomBar() {
                 selected = (selectedItem == bottomMenuItem.label),
                 onClick = {
                     selectedItem = bottomMenuItem.label
-                    if(bottomMenuItem.label == "Cart") {
-                        context.startActivity(Intent(context, CartActivity::class.java))
-                    } else {
-                        Toast.makeText(context, bottomMenuItem.label, Toast.LENGTH_SHORT).show()
+                    when (bottomMenuItem.label) {
+                        "Cart" -> {
+                            context.startActivity(Intent(context, CartActivity::class.java))
+                        }
+                        "Favorite" -> {
+                            context.startActivity(Intent(context, FavoriteActivity::class.java))
+                        }
+                        else -> {
+                            Toast.makeText(context, bottomMenuItem.label, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 },
                 icon = {
@@ -52,20 +59,17 @@ fun MyBottomBar() {
     }
 }
 
-data class BottomMenuItem (
+data class BottomMenuItem(
     val label: String,
     val icon: Painter
 )
 
 @Composable
 fun prepareBottomMenu(): List<BottomMenuItem> {
-    val bottomMenuItemList = arrayListOf<BottomMenuItem>()
-
-    bottomMenuItemList.add(BottomMenuItem(label = "Home", icon = painterResource(R.drawable.btn_1)))
-    bottomMenuItemList.add(BottomMenuItem(label = "Cart", icon = painterResource(R.drawable.btn_2)))
-    bottomMenuItemList.add(BottomMenuItem(label = "Favorite", icon = painterResource(R.drawable.btn_3)))
-    bottomMenuItemList.add(BottomMenuItem(label = "Order", icon = painterResource(R.drawable.btn_4)))
-    bottomMenuItemList.add(BottomMenuItem(label = "Profile", icon = painterResource(R.drawable.btn_5)))
-
-    return bottomMenuItemList
+    return listOf(
+        BottomMenuItem(label = "Home", icon = painterResource(R.drawable.btn_1)),
+        BottomMenuItem(label = "Cart", icon = painterResource(R.drawable.btn_2)),
+        BottomMenuItem(label = "Favorite", icon = painterResource(R.drawable.btn_3)),
+        BottomMenuItem(label = "Profile", icon = painterResource(R.drawable.btn_5))
+    )
 }
