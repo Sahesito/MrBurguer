@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MrBurguer">
         <activity
+            android:name=".activity.cart.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.details.DetailEachFoodActivity"
             android:exported="false" />
         <activity

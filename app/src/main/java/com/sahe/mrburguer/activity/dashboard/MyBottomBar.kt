@@ -1,5 +1,7 @@
 package com.sahe.mrburguer.activity.dashboard
 
+import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -16,6 +18,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.sahe.mrburguer.R
+import com.sahe.mrburguer.activity.cart.CartActivity
 
 @Composable
 fun MyBottomBar() {
@@ -32,9 +35,9 @@ fun MyBottomBar() {
                 onClick = {
                     selectedItem = bottomMenuItem.label
                     if(bottomMenuItem.label == "Cart") {
-                        // TODO
+                        context.startActivity(Intent(context, CartActivity::class.java))
                     } else {
-                        // TODO
+                        Toast.makeText(context, bottomMenuItem.label, Toast.LENGTH_SHORT).show()
                     }
                 },
                 icon = {

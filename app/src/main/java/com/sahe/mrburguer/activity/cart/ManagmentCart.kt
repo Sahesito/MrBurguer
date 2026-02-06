@@ -1,9 +1,10 @@
-package com.sahe.mrburguer.db;
+package com.sahe.mrburguer.activity.cart
 
 import android.content.Context
 import android.widget.Toast
+import com.sahe.mrburguer.db.ChangeNumberItemsListener
+import com.sahe.mrburguer.db.TinyDB
 import com.sahe.mrburguer.domain.FoodModel
-
 
 class ManagmentCart(val context: Context) {
 
@@ -30,19 +31,28 @@ class ManagmentCart(val context: Context) {
     fun minusItem(listFood: ArrayList<FoodModel>, position: Int, listener: ChangeNumberItemsListener) {
         if (position < 0 || position >= listFood.size) return
         val currentCount = listFood[position].numberInCart
-        if (currentCount <= 1) {
-            listFood.removeAt(position)
-        } else {
+        if (currentCount > 1) {
             listFood[position].numberInCart = currentCount - 1
+            tinyDB.putListObject("CartList", listFood)
+            listener.onChanged()
         }
-        tinyDB.putListObject("CartList", listFood)
-        listener.onChanged()
     }
 
     fun plusItem(listFood: ArrayList<FoodModel>, position: Int, listener: ChangeNumberItemsListener) {
         listFood[position].numberInCart++
         tinyDB.putListObject("CartList", listFood)
         listener.onChanged()
+    }
+
+    fun removeItem(listFood: ArrayList<FoodModel>, position: Int, listener: ChangeNumberItemsListener) {
+        if (position < 0 || position >= listFood.size) return
+        listFood.removeAt(position)
+        tinyDB.putListObject("CartList", listFood)
+        listener.onChanged()
+    }
+
+    fun clearCart() {
+        tinyDB.putListObject("CartList", arrayListOf<FoodModel>())
     }
 
     fun getTotalFee(): Double {

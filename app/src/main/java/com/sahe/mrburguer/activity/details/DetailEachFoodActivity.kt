@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.sahe.mrburguer.db.ManagmentCart
+import com.sahe.mrburguer.activity.cart.ManagmentCart
 import com.sahe.mrburguer.domain.FoodModel
 
 class DetailEachFoodActivity : AppCompatActivity() {
