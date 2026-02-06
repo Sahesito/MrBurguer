@@ -79,7 +79,6 @@ fun SplashScreen( onGetStartedClick:()->Unit = {} ) {
             withStyle(style = SpanStyle(color = colorResource(R.color.orange))) {
                 append("Mr\nBurguer ")
             }
-            append(" experience food perfection delivered")
         }
         Text(
             text = styledText,
