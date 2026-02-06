@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.sahe.mrburguer.domain.BannerModel
+import com.sahe.mrburguer.domain.CategoryModel
 import com.sahe.mrburguer.viewModel.MainViewModel
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +34,10 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     val viewModel = MainViewModel()
     val banners = remember { mutableStateListOf<BannerModel>() }
+    val categories = remember { mutableStateListOf<CategoryModel>() }
+
     var showBannerLoading by remember { mutableStateOf(true) }
+    var showCategoryLoading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         viewModel.loadBanner().observeForever {
@@ -43,6 +47,13 @@ fun MainScreen() {
         }
     }
 
+    LaunchedEffect(Unit) {
+        viewModel.loadCategory().observeForever {
+            categories.clear()
+            categories.addAll(it)
+            showCategoryLoading = false
+        }
+    }
 
     Scaffold(
         bottomBar = { MyBottomBar() }
@@ -56,6 +67,7 @@ fun MainScreen() {
             item { TopBar() }
             item { Banner(banners, showBannerLoading) }
             item { Search() }
+            item { CategorySection(categories, showCategoryLoading) }
         }
     }
 }
