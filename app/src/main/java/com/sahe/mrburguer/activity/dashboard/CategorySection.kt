@@ -26,12 +26,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.sahe.mrburguer.R
+import com.sahe.mrburguer.activity.itemsList.ItemsListActivity
 import com.sahe.mrburguer.domain.CategoryModel
 
 @Composable
 fun CategorySection(
     categories: SnapshotStateList<CategoryModel>,
-    showCategoryLoading: Boolean
+    showCategoryLoading: Boolean,
 ) {
     Text(
         text = "Choose category",
@@ -74,6 +75,11 @@ fun CategorySection(
                                 .weight(1f)
                                 .padding(horizontal = 8.dp),
                             onItemClick = {
+                                val intent = Intent(context, ItemsListActivity::class.java).apply {
+                                    putExtra("id", categoryModel.Id.toString())
+                                    putExtra("title", categoryModel.Name)
+                                }
+                                context.startActivity(intent)
                             }
                         )
                     }

@@ -36,6 +36,7 @@ fun MainScreen() {
     val banners = remember { mutableStateListOf<BannerModel>() }
     val categories = remember { mutableStateListOf<CategoryModel>() }
 
+
     var showBannerLoading by remember { mutableStateOf(true) }
     var showCategoryLoading by remember { mutableStateOf(true) }
 

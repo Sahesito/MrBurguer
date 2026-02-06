@@ -61,5 +61,6 @@ dependencies {
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
     implementation("io.coil-kt:coil-compose:2.7.0")
-    implementation("androidx.compose.foundation:foundation:1.10.2")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.1")
+    implementation("com.google.code.gson:gson:2.10.1")
 }

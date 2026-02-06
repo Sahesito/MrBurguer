@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MrBurguer">
         <activity
+            android:name=".activity.details.DetailEachFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.itemsList.ItemsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -24,7 +30,7 @@
             android:name=".activity.dashboard.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MrBurguer"></activity>
+            android:theme="@style/Theme.MrBurguer" />
     </application>
 
 </manifest>
