@@ -3,6 +3,9 @@
 ---
 
 **MrBurguer** es una aplicación Android moderna para pedidos de comida, desarrollada con **Jetpack Compose** y **Firebase**, enfocada en rendimiento, arquitectura limpia y experiencia de usuario fluida.
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white) 
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white) 
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 
 ---
 
