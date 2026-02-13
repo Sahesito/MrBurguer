@@ -2,7 +2,7 @@
 
 ---
 
-**MrBurguer** es una aplicación Android moderna para pedidos de comida, desarrollada con **Jetpack Compose** y **Firebase**, enfocada en rendimiento, arquitectura limpia y experiencia de usuario fluida.
+**MrBurguer** is a modern Android food ordering application built with Jetpack Compose and Firebase, focused on performance, clean architecture, and a smooth user experience.
 
 ![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white) 
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white) 
@@ -10,51 +10,51 @@
 
 ---
 
-## 🚀 Características principales
+## 🚀 Key Features
 
-- 📱 **UI moderna** con Jetpack Compose
-- 🔥 **Backend en Firebase** Realtime Database
-- 🛒 **Carrito de compras** persistente
-- ❤️ **Sistema de favoritos**
-- 🔍 **Filtrado por categorías**
-- ⏱ **Información de tiempo, rating y calorías**
-- 🔐 **Autenticación** con Firebase Auth
-- ⚡ **Carga eficiente de imágenes** con Coil
+- 📱 **Modern UI** built with Jetpack Compose
+- 🔥 **Firebase Realtime Database** backend
+- 🛒 Persistent **shopping cart**
+- ❤️ **Favorites system**
+- 🔍 Category-based filtering
+- ⏱  Display of preparation time, rating, and calories
+- 🔐 Authentication with Firebase Auth
+- ⚡ Efficient image loading with Coil
 
 ---
 
-## 🧱 Arquitectura
+## 🧱 Architecture
 
-El proyecto sigue una arquitectura **MVVM**, con separación clara de responsabilidades:
+The project follows an MVVM architecture, with clear separation of concerns:
 ```
-data        → Repositorios y fuentes de datos
-domain      → Modelos de negocio
-viewmodel   → Estado y lógica de UI
-ui          → Pantallas y componentes Compose
+data        → Repositories and data sources
+domain      → Business models
+viewmodel   → UI state and logic
+ui          → Screens and Compose components
 ```
 
-### Principios aplicados:
+### Applied Principles:
 - ✅ Single source of truth
-- ✅ Estado reactivo
-- ✅ Escalabilidad
+- ✅ Reactive state management
+- ✅ Scalable structure
 
 ---
 
-## 🛠 Tecnologías utilizadas
+## 🛠 Technologies Used
 
-| Categoría | Tecnología |
+| Category | Technology |
 |-----------|-----------|
-| Lenguaje | **Kotlin** |
+| Language | **Kotlin** |
 | UI | **Jetpack Compose** |
-| Base de datos | **Firebase Realtime Database** |
-| Autenticación | **Firebase Authentication** |
-| Imágenes | **Coil** |
-| Diseño | **Material 3** |
-| Arquitectura | **MVVM** |
+| Database | **Firebase Realtime Database** |
+| Authentication | **Firebase Authentication** |
+| Image Loading | **Coil** |
+| Design | **Material 3** |
+| Architecture | **MVVM** |
 
 ---
 
-## 📸 Capturas
+## 📸 Screenshots
 <img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/f9816763-223d-4260-9435-2c98bf31a00c" />
 <img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/b4ee0ef2-578d-47f2-a8de-4b7713060da2" />
 <img width="420" height="855" alt="image" src="https://github.com/user-attachments/assets/f96c927f-a318-4a7d-9386-7c652da0a7ff" />
@@ -64,19 +64,19 @@ ui          → Pantallas y componentes Compose
 
 ---
 
-## ▶️ Instalación
+## ▶️ Installation
 
-### 1️⃣ Clona el repositorio:
+### 1️⃣ Clone the repository:
 ```bash
 git clone https://github.com/sahesito/mrburguer.git
 ```
 
-### 2️⃣ Abre el proyecto en Android Studio
+### 2️⃣ Open the project in Android Studio
 
-### 3️⃣ Configura Firebase:
-- Agrega `google-services.json` al directorio `app/`
-- Habilita **Authentication** y **Realtime Database** en la consola de Firebase
+### 3️⃣ Configure Firebase:
+- Add `google-services.json` to the `app/` directory
+- Enable **Authentication** and **Realtime Database** in the Firebase Console
 
-### 4️⃣ Ejecuta el proyecto 🚀
+### 4️⃣ Run the project 🚀
 
 ---
